@@ -1,3 +1,16 @@
+'''
+Created by Guilherme Umemura
+
+Libraries used: 
+    selenium, for browser navigation
+    xlwt, for excel manuseability
+    
+GitHub: https://github.com/Gumemura/Amazon_web_scrapper
+
+Excel will be saved on the same directory as script
+    
+'''
+
 import time #for giving the script a little break
 from selenium import webdriver 
 
@@ -6,9 +19,7 @@ from xlwt import Workbook #excel functions
 url = 'https://www.amazon.com.br/'
 
 class amazon_scraper:
-
-    
-    def __init__(self, url):
+    def __init__(self, product):
         self.url = url #the site we are going to be scraping
         self.driver = webdriver.Firefox()
         self.driver.get(self.url)
@@ -27,6 +38,10 @@ class amazon_scraper:
         self.column_name = 0
         
         self.column_price = 1
+        
+        self.search_and_enter(product)
+        self.time_break(2)
+        self.grab_product_info()
     
     def search_and_enter(self, word = 'None'):
         '''
@@ -80,7 +95,4 @@ class amazon_scraper:
         '''
         time.sleep(break_time)
 
-a = amazon_scraper(url)
-a.search_and_enter('batata')
-a.time_break(2)
-a.grab_product_info()
+iphone_finder = amazon_scraper('iphone')
