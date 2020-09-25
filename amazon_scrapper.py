@@ -8,11 +8,16 @@ Libraries used:
 GitHub: https://github.com/Gumemura/Amazon_web_scrapper
 
 Excel will be saved on the same directory as script
-    
+
+Developed in
+    Spyder 4.1.5
+    Anaconda 4.8.4
+    Python 3.7.4 
 '''
 
 import time #for giving the script a little break
 from selenium import webdriver 
+from tkinter import *
 
 from xlwt import Workbook #excel functions
 
@@ -86,7 +91,6 @@ class amazon_scraper:
         '''Closing and saving excel'''
         self.wb.save('Amazon scraping results.xls')
 
-        
     def time_break(self, break_time):
         '''
         Gives the execution a break
@@ -95,4 +99,31 @@ class amazon_scraper:
         '''
         time.sleep(break_time)
 
-iphone_finder = amazon_scraper('iphone')
+#iphone_finder = amazon_scraper('iphone')
+
+def open_windows():
+    root = Tk()
+
+    # Creating a Label Widget
+    myLabel = Label(root, text="Hello World!")
+    
+    e = Entry(root, width=50, font=('Helvetica', 24))
+    e.pack()
+    e.insert(0, "Enter Your Name: ")
+
+    hello = "Hello " + e.get()
+    myLabel = Label(root, text=hello)
+    e.delete(0, 'end')
+    myLabel.pack()
+    
+
+    myButton = Button(root, text="Enter Your Stock Quote", command=myClick)
+    myButton.pack()
+
+    root.mainloop()
+
+def myClick():
+    print("oi")
+        
+        
+open_windows()
