@@ -1,5 +1,14 @@
 '''
-Created by Guilherme Umemura
+A Web scrapper that do the following:
+1 opens a browser
+2 go to amazon
+3 search for productSearch (see variable below)
+4 write name's product and price on a excel
+5 saves excel in same directory as this code
+
+IMPORTANT: for proper usage, you must have geckodriver.exe (for firefox) or chromedriver.exe (for chrome) in same directory as code file
+
+Created by Guilherme Umemura in september 2020
 
 Libraries used: 
     selenium, for browser navigation
@@ -22,6 +31,7 @@ from tkinter import *
 from xlwt import Workbook #excel functions
 
 url = 'https://www.amazon.com.br/'
+productSearch = "iphone"
 
 class amazon_scraper:
     def __init__(self, product):
@@ -99,31 +109,4 @@ class amazon_scraper:
         '''
         time.sleep(break_time)
 
-#iphone_finder = amazon_scraper('iphone')
-
-def open_windows():
-    root = Tk()
-
-    # Creating a Label Widget
-    myLabel = Label(root, text="Hello World!")
-    
-    e = Entry(root, width=50, font=('Helvetica', 24))
-    e.pack()
-    e.insert(0, "Enter Your Name: ")
-
-    hello = "Hello " + e.get()
-    myLabel = Label(root, text=hello)
-    e.delete(0, 'end')
-    myLabel.pack()
-    
-
-    myButton = Button(root, text="Enter Your Stock Quote", command=myClick)
-    myButton.pack()
-
-    root.mainloop()
-
-def myClick():
-    print("oi")
-        
-        
-open_windows()
+iphone_finder = amazon_scraper(productSearch)
